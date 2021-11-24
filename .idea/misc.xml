@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3175925925925926" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.23541666666666666" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.23541666666666666" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_baseline_mobile_friendly_24.xml" value="0.3175925925925926" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.23541666666666666" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3175925925925926" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/incluir.xml" value="0.4036458333333333" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/activity_informacao_dialog.xml" value="0.3875" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/activity_logado.xml" value="0.25" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/activity_login.xml" value="0.67" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/activity_main2.xml" value="0.21927083333333333" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/activity_menu.xml" value="0.228125" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/activity_principal.xml" value="0.33" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/activity_registro.xml" value="0.5" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/content_logado.xml" value="0.21979166666666666" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/content_menu_activy.xml" value="0.228125" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/fragment_first.xml" value="0.25" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/fragment_second.xml" value="0.228125" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/fragment_toobar.xml" value="0.31574074074074077" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/menu_activy.xml" value="0.228125" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/toolbar.xml" value="0.31574074074074077" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/menu/menu_principal.xml" value="0.7521551724137931" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3175925925925926" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3175925925925926" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
