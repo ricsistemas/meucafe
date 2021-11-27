@@ -32,41 +32,42 @@ public class RegistroActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private boolean insert = false;
+    private ProgressBar barraRegistro;
+    private EditText edNome ;
+    private EditText edEmail ;
+    private EditText edCelular ;
+    private EditText edSenha ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
+        setContentView(R.layout.registro);
         getSupportActionBar().hide();
+        barraRegistro = findViewById(R.id.barraRegistro);
+        edNome = findViewById(R.id.edNome);
+        edEmail = findViewById(R.id.edEmail);
+        edCelular = findViewById(R.id.edCelular);
+        edSenha = findViewById(R.id.edSenha);
+
+
     }
 
     public void onEfetuaRegistro(View view) {
-        int erro;
-
-
-        EditText edNome = findViewById(R.id.edNome);
-        EditText edEmail = findViewById(R.id.edEmail);
-        EditText edCelular = findViewById(R.id.edCelular);
-        EditText edSenha = findViewById(R.id.edSenha);
-        // EditText edSenha2 = findViewById(R.id.edESenha2);
 
         Usuario usuario = new Usuario(
                 edNome.getText().toString(),
                 edEmail.getText().toString(),
                 edCelular.getText().toString());
-        ProgressBar barraregistro = findViewById(R.id.barraRegistro);
 
-        erro = isValido(edNome);
-        erro = +isCelualarValid(edCelular);
-        erro = +ValidaEmail(edEmail);
-        erro = +isSenhaValid(edSenha);
+        int erro = isValido(edNome);
+        erro =+isCelualarValid(edCelular);
+        erro =+ValidaEmail(edEmail);
+        erro =+isSenhaValid(edSenha);
         if (erro != 0) return;
 
-        Toast.makeText(RegistroActivity.this,
-                "Tentando Validar",
-                Toast.LENGTH_SHORT).show();
 
-        barraregistro.setVisibility(View.VISIBLE);
+        barraRegistro.setVisibility(View.VISIBLE);
+
         mAuth = FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(edEmail.getText().toString(), edSenha.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -90,10 +91,9 @@ public class RegistroActivity extends AppCompatActivity {
                                         }// 2 conseguiu salvar login
                                     });
 
-                            barraregistro.setVisibility(View.GONE);
-                            Intent intent = new Intent(RegistroActivity.this, Principal.class);
+                            barraRegistro.setVisibility(View.GONE);
+                            Intent intent = new Intent(RegistroActivity.this, ProdutoActivity.class);
                             startActivity(intent);
-                            barraregistro.setVisibility(View.GONE);
                             finish();
 
                         } // 1 conseguiu salvar login
@@ -120,7 +120,7 @@ public class RegistroActivity extends AppCompatActivity {
                     }
                 });
 
-        barraregistro.setVisibility(View.GONE);
+        barraRegistro.setVisibility(View.GONE);
     }
 
 }

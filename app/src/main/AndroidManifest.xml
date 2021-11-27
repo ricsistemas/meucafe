@@ -10,16 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeuCafe">
         <activity
+            android:name=".MenuActivity"
+            android:exported="false"
+            android:label="@string/title_activity_menu" />
+        <activity
             android:name=".Activity.InformacaoDialog"
             android:exported="false" />
         <activity
-            android:name=".Activity.Principal"
+            android:name=".Activity.ProdutoActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.RegistroActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.MainActivity"

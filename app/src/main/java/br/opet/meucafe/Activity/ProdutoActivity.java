@@ -34,7 +34,7 @@ import java.util.UUID;
 import br.opet.meucafe.Model.Produto;
 import br.opet.meucafe.R;
 
-public class Principal extends AppCompatActivity {
+public class ProdutoActivity extends AppCompatActivity {
     EditText edDescricao;
     ListView listView;
     ProgressBar progressBar;
@@ -48,7 +48,7 @@ public class Principal extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal);
+        setContentView(R.layout.principal);
         edDescricao = findViewById(R.id.edProduto);
         listView = findViewById(R.id.viewProduto);
         FirebaseApp.initializeApp(this);
@@ -75,7 +75,7 @@ public class Principal extends AppCompatActivity {
                     ListaProduto.add(p);
                 }
                 Collections.sort(ListaProduto);
-                produtoArrayAdapter = new ArrayAdapter<Produto>(Principal.this, android.R.layout.simple_list_item_1, ListaProduto);
+                produtoArrayAdapter = new ArrayAdapter<Produto>(ProdutoActivity.this, android.R.layout.simple_list_item_1, ListaProduto);
                 listView.setAdapter(produtoArrayAdapter);
             }
 
@@ -108,12 +108,12 @@ public class Principal extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(Principal.this,
+                            Toast.makeText(ProdutoActivity.this,
                                     "Produto incluido com suscesso",
                                     Toast.LENGTH_SHORT).show();
 
                         } else {
-                            Toast.makeText(Principal.this,
+                            Toast.makeText(ProdutoActivity.this,
                                     "Falha ao incluir",
                                     Toast.LENGTH_SHORT).show();
                         }
@@ -129,12 +129,12 @@ public class Principal extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(Principal.this,
+                            Toast.makeText(ProdutoActivity.this,
                                     "Produto Alterado com suscesso",
                                     Toast.LENGTH_SHORT).show();
 
                         } else {
-                            Toast.makeText(Principal.this,
+                            Toast.makeText(ProdutoActivity.this,
                                     "Falha na alteração",
                                     Toast.LENGTH_SHORT).show();
                         }
@@ -147,11 +147,11 @@ public class Principal extends AppCompatActivity {
                 AlertDialog alerta;
 
                 //Cria o gerador do AlertDialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(Principal.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProdutoActivity.this);
                 //define o titulo
                 builder.setTitle("Exclusão");
                 //define a mensagem
-                builder.setMessage("Excluir Produto \n"+ edDescricao.getText().toString()+" \n\nConfirma?");
+                builder.setMessage("Excluir Produto \n" + edDescricao.getText().toString() + " \n\nConfirma?");
                 //define um botão como positivo
                 builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
@@ -160,12 +160,12 @@ public class Principal extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(Principal.this,
+                                    Toast.makeText(ProdutoActivity.this,
                                             "Excluido com suscesso",
                                             Toast.LENGTH_SHORT).show();
 
                                 } else {
-                                    Toast.makeText(Principal.this,
+                                    Toast.makeText(ProdutoActivity.this,
                                             "Falha na exclusão",
                                             Toast.LENGTH_SHORT).show();
                                 }
