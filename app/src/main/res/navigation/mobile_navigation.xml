@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="br.opet.meucafe.ui.home.HomeFragment"
+        android:name="br.opet.meucafe.Activity.Fragmentos.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="br.opet.meucafe.ui.pedido.PedidoFragment"
+        android:name="br.opet.meucafe.Activity.Fragmentos.CardapioFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_pedido" />
+        tools:layout="@layout/fragment_cardapio" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="br.opet.meucafe.ui.notifications.NotificationsFragment"
+        android:name="br.opet.meucafe.Activity.Fragmentos.CarrinhoFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_carrinho" />
 </navigation>

@@ -26,7 +26,8 @@
     <string name="todo">TODO</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dashboard">Cardápio</string>
+    <string name="title_notifications">Carrinho</string>
     <string name="pedido">Pedido</string>
+    <string name="produto">Produto</string>
 </resources>

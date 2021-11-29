@@ -1,16 +1,17 @@
 package br.opet.meucafe.Model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Usuario {
+public class Usuario implements Serializable {
 
     private String id;
     private String nome;
     private String email;
     private String celular;
     private String cpf;
-    private LocalDateTime CriadoEm;
+    private String CriadoEm;
     private int tipo;
     private int Ativo;
 
@@ -24,14 +25,29 @@ public class Usuario {
     }
 
 
+    public Usuario() {
+
+
+    }
+
+
     public Usuario(String nome, String email, String celular) {
         this.nome = nome;
         this.email = email;
         this.celular = celular;
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        this.CriadoEm = now;
+        this.CriadoEm = now.toString();
         Ativo = 1;
+    }
+
+
+    public String getCriadoEm() {
+        return CriadoEm;
+    }
+
+    public void setCriadoEm(String criadoEm) {
+        CriadoEm = criadoEm;
     }
 
     public String getId() {
@@ -72,14 +88,6 @@ public class Usuario {
 
     public void setCelular(String celular) {
         this.celular = celular;
-    }
-
-    public LocalDateTime getCriadoEm() {
-        return CriadoEm;
-    }
-
-    public void setCriadoEm(LocalDateTime criadoEm) {
-        CriadoEm = criadoEm;
     }
 
     public int getAtivo() {

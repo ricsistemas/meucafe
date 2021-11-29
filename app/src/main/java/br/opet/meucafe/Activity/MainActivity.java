@@ -20,7 +20,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import br.opet.meucafe.MenuActivity;
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textRecuperar;
     private ProgressBar progresBarLogin;
     private FirebaseAuth autentica;
-
+    private boolean home;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
@@ -48,10 +47,18 @@ public class MainActivity extends AppCompatActivity {
         textSenha = findViewById(R.id.textLoginSenha);
         textRecuperar = findViewById(R.id.textRecuperar);
         progresBarLogin = findViewById(R.id.barraLogin);
-        //=========== pega os id dos objetos ============
+        Bundle extras = getIntent().getExtras();
+        if(extras != null)
+        {
+            //apenas para evitar redundancia,
+            //quando a chamada vem de home ou de outro lugar.
+            home =  extras.getBoolean("home");
+        }
 
-        if (autentica.getCurrentUser() != null) {
+        //=========== pega os id dos objetos ============
+        if (autentica.getCurrentUser() != null && !home) {
             Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+
             startActivity(intent);
             finish();
         }
@@ -71,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                             toast.show();
                             progresBarLogin.setVisibility(View.GONE);
                             Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                            intent.putExtra("usuario",true);
+                            progresBarLogin.setVisibility(View.GONE);
                             startActivity(intent);
                             finish();
 

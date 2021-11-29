@@ -3,34 +3,33 @@ package br.opet.meucafe.Model;
 import java.io.Serializable;
 
 public class Itens implements Serializable {
- private String id;
- private Pedido pedido ;
- private Produto produto;
- private int quantidade;
- private int ordem;
+    private String produto_descricao;
+    private String produto_id;
+    private double produto_preco;
+    private int quantidade;
 
-    public String getId() {
-        return id;
+    public String getProduto_descricao() {
+        return produto_descricao;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setProduto_descricao(String produto_descricao) {
+        this.produto_descricao = produto_descricao;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public String getProduto_id() {
+        return produto_id;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setProduto_id(String produto_id) {
+        this.produto_id = produto_id;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public double getProduto_preco() {
+        return produto_preco;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setProduto_preco(double produto_preco) {
+        this.produto_preco = produto_preco;
     }
 
     public int getQuantidade() {
@@ -40,12 +39,6 @@ public class Itens implements Serializable {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-
-    public int getOrdem() {
-        return ordem;
-    }
-
-    public void setOrdem(int ordem) {
-        this.ordem = ordem;
-    }
 }
+
+

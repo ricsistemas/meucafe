@@ -44,7 +44,6 @@ public class ProdutoActivity extends AppCompatActivity {
     private ArrayAdapter<Produto> produtoArrayAdapter;
     private Produto produtoSelecionado;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".Activity.Fragmentos.HomeFragment">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonRegistrar" />
 
     <Button
-        android:id="@+id/buttonSair"
+        android:id="@+id/buttonTrocar"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:text="Trocar de usuário"

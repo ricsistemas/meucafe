@@ -8,7 +8,12 @@
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.23541666666666666" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_baseline_mobile_friendly_24.xml" value="0.3175925925925926" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.23541666666666666" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.3880208333333333" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3880208333333333" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3175925925925926" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_logo_background.xml" value="0.3880208333333333" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.3880208333333333" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.3880208333333333" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/drawable/incluir.xml" value="0.4036458333333333" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/activity_informacao_dialog.xml" value="0.3875" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/activity_logado.xml" value="0.25" />
@@ -20,19 +25,22 @@
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/activity_registro.xml" value="0.5" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/content_logado.xml" value="0.21979166666666666" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/content_menu_activy.xml" value="0.228125" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/fragment_blank.xml" value="0.3578125" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/fragment_dashboard.xml" value="0.3875" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/fragment_first.xml" value="0.25" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/fragment_home.xml" value="0.3875" />
-        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/fragment_pedido.xml" value="0.371875" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/fragment_notifications.xml" value="0.31302083333333336" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/fragment_pedido.xml" value="0.4517167381974249" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/fragment_second.xml" value="0.228125" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/fragment_toobar.xml" value="0.31574074074074077" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/login.xml" value="0.33" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/menu_activy.xml" value="0.228125" />
-        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/principal.xml" value="0.371875" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/principal.xml" value="0.25" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/registro.xml" value="0.31302083333333336" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/layout/toolbar.xml" value="0.31574074074074077" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/menu/bottom_nav_menu.xml" value="0.371875" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/menu/menu_pedido.xml" value="0.371875" />
-        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/menu/menu_principal.xml" value="0.7521551724137931" />
+        <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/menu/menu_principal.xml" value="0.26098191214470284" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/menu/menu_rodape.xml" value="0.31302083333333336" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3175925925925926" />
         <entry key="..\:/Opet.DEV/Android/meu_cafe/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3175925925925926" />

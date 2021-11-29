@@ -11,7 +11,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 public class Util {
 
 
-
     public static int ValidaEmail(EditText obj) {
         if (isValido(obj) != 0) {
             return 1;

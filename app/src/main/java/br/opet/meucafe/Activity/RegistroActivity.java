@@ -22,7 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 import br.opet.meucafe.Model.Usuario;
@@ -30,13 +29,14 @@ import br.opet.meucafe.R;
 
 public class RegistroActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
+    private FirebaseAuth autoriza;
     private boolean insert = false;
     private ProgressBar barraRegistro;
-    private EditText edNome ;
-    private EditText edEmail ;
-    private EditText edCelular ;
-    private EditText edSenha ;
+    private EditText edNome;
+    private EditText edEmail;
+    private EditText edCelular;
+    private EditText edSenha;
+    private String usuario_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,26 +60,24 @@ public class RegistroActivity extends AppCompatActivity {
                 edCelular.getText().toString());
 
         int erro = isValido(edNome);
-        erro =+isCelualarValid(edCelular);
-        erro =+ValidaEmail(edEmail);
-        erro =+isSenhaValid(edSenha);
+        erro = +isCelualarValid(edCelular);
+        erro = +ValidaEmail(edEmail);
+        erro = +isSenhaValid(edSenha);
         if (erro != 0) return;
 
-
         barraRegistro.setVisibility(View.VISIBLE);
-
-        mAuth = FirebaseAuth.getInstance();
-        mAuth.createUserWithEmailAndPassword(edEmail.getText().toString(), edSenha.getText().toString())
+        autoriza = FirebaseAuth.getInstance();
+        autoriza.createUserWithEmailAndPassword(edEmail.getText().toString(), edSenha.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            usuario_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+
                             FirebaseDatabase.getInstance().
                                     getReference("Usuarios")
-                                    .child(FirebaseAuth.getInstance()
-                                            .getCurrentUser().getUid())
+                                    .child(usuario_id)
                                     .setValue(usuario)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
@@ -88,13 +86,19 @@ public class RegistroActivity extends AppCompatActivity {
                                             Toast.makeText(RegistroActivity.this,
                                                     "Usuário Registrado com suscesso",
                                                     Toast.LENGTH_SHORT).show();
+
+
                                         }// 2 conseguiu salvar login
                                     });
 
                             barraRegistro.setVisibility(View.GONE);
-                            Intent intent = new Intent(RegistroActivity.this, ProdutoActivity.class);
-                            startActivity(intent);
-                            finish();
+                          // se conseguir fazer insert ja entra na tela principal
+                            if (insert) {
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                intent.putExtra("usuario_id",usuario_id);
+                                startActivity(intent);
+                                finish();
+                            }
 
                         } // 1 conseguiu salvar login
                         else {
