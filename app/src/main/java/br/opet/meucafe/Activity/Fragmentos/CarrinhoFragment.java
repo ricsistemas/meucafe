@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -27,6 +29,7 @@ import java.util.Collections;
 import java.util.List;
 
 import br.opet.meucafe.Activity.ProdutoActivity;
+import br.opet.meucafe.Activity.RegistroActivity;
 import br.opet.meucafe.Model.Itens;
 import br.opet.meucafe.Model.Pedido;
 import br.opet.meucafe.Model.Produto;
@@ -48,6 +51,7 @@ public class CarrinhoFragment extends Fragment {
     private TextView textQtd;
     private TextView textTotal;
     private Usuario usuario;
+    private Button buttonFinalizar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -64,10 +68,23 @@ public class CarrinhoFragment extends Fragment {
         textQtd =  root.findViewById(R.id.textQtd);
         textTotal =  root.findViewById(R.id.textTotal);
 
-
-
         recuperaDadosUsuario();
         recuperarPedido();
+
+        buttonFinalizar = root.findViewById(R.id.buttonFinalizar);
+        buttonFinalizar.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick (View view){
+                Toast.makeText( getContext(),
+                        "Pedido enviado com suscesso",
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
 
         return root;
     }
@@ -108,6 +125,8 @@ public class CarrinhoFragment extends Fragment {
             }
         });
     }
+
+
 
 
     @Override

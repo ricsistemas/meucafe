@@ -2,6 +2,7 @@ package br.opet.meucafe.Activity.Fragmentos;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -9,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -27,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import br.opet.meucafe.Activity.ProdutoActivity;
+import br.opet.meucafe.Activity.RegistroActivity;
 import br.opet.meucafe.Model.Itens;
 import br.opet.meucafe.Model.Pedido;
 import br.opet.meucafe.Model.Produto;
@@ -51,6 +56,8 @@ public class CardapioFragment extends Fragment {
     private Pedido pedido;
     private Usuario usuario = new Usuario();
     private String usu_id;
+    private Button buttonFinalizar;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentCardapioBinding.inflate(inflater, container, false);
@@ -62,9 +69,8 @@ public class CardapioFragment extends Fragment {
         databaseReference = firebaseDatabase.getReference();
         autentica = FirebaseAuth.getInstance();
         usu_id = autentica.getCurrentUser().getUid();
-
-       CarregarDados();
-       recuperaDadosUsuario();
+        CarregarDados();
+        recuperaDadosUsuario();
         recuperarPedido();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -80,7 +86,7 @@ public class CardapioFragment extends Fragment {
                 buider.setView(edQuant);
                 edQuant.setInputType(InputType.TYPE_CLASS_NUMBER);
                 edQuant.requestFocus();
-                 buider.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                buider.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Itens itemPedido = new Itens();
@@ -112,13 +118,14 @@ public class CardapioFragment extends Fragment {
 
         return root;
     }
+
     private void recuperarPedido() {
 
         databaseReference.child("Pedidos").child(usu_id).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.getValue()!=null) {
+                if (snapshot.getValue() != null) {
                     pedido = snapshot.getValue(Pedido.class);
                 }
             }
@@ -129,7 +136,6 @@ public class CardapioFragment extends Fragment {
             }
         });
     }
-
 
 
     private void recuperaDadosUsuario() {
@@ -171,7 +177,7 @@ public class CardapioFragment extends Fragment {
         });
     }
 
-    @Override
+
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
