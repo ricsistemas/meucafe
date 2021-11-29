@@ -37,27 +37,21 @@ public class CardapioFragment extends Fragment {
 
     //private PedidoViewModel dashboardViewModel;
     private FragmentCardapioBinding binding;
-    private EditText edDescricao;
+
     private ListView listView;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private FirebaseAuth autentica;
 
     private List<Produto> ListaProduto = new ArrayList<>();
-    private List<Itens> itemsCarinho =  new ArrayList<>();
+    private List<Itens> itemsCarinho = new ArrayList<>();
     private ArrayAdapter<Produto> produtoArrayAdapter;
     private Produto produtoSelecionado;
-    private Pedido pedidoRecuperado;
-    private Usuario usuario = new Usuario();;
+    private Pedido pedido;
+    private Usuario usuario = new Usuario();
     private String usu_id;
-
-
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        //dashboardViewModel =             new ViewModelProvider(this).get(PedidoViewModel.class);
-
         binding = FragmentCardapioBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
@@ -70,6 +64,7 @@ public class CardapioFragment extends Fragment {
 
         CarregarDados();
         recuperaDadosUsuario();
+        recuperarPedido();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -92,11 +87,12 @@ public class CardapioFragment extends Fragment {
                         itemPedido.setQuantidade(Integer.parseInt(edQuant.getText().toString()));
                         itemPedido.setProduto_preco(produtoSelecionado.getPreco());
 
-                        if (pedidoRecuperado == null) {
-                            pedidoRecuperado = new Pedido(usu_id);
+                        if (pedido == null) {
+                            pedido = new Pedido();
+                            pedido.setCliente_Nome(usuario.getNome());
                         }
-                        pedidoRecuperado.AddItens(itemPedido);
-                        pedidoRecuperado.salvar();
+                        pedido.AddItens(itemPedido);
+                        pedido.salvar(usu_id);
 
                     }
                 });
@@ -115,13 +111,29 @@ public class CardapioFragment extends Fragment {
 
         return root;
     }
+    private void recuperarPedido() {
+
+        databaseReference.child("Pedidos").child(usu_id).addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                pedido = snapshot.getValue(Pedido.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
 
     private void recuperaDadosUsuario() {
         databaseReference.child("Usuarios").child(usu_id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 usuario = snapshot.getValue(Usuario.class);
-        //        String sapo = "sapo";
             }
 
             @Override
@@ -132,7 +144,6 @@ public class CardapioFragment extends Fragment {
     }
 
     private void CarregarDados() {
-
 
         databaseReference.child("Produtos").addValueEventListener(new ValueEventListener() {
             @Override
