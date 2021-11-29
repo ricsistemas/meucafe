@@ -3,6 +3,7 @@ package br.opet.meucafe.Activity.Fragmentos;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,8 +78,9 @@ public class CardapioFragment extends Fragment {
                 EditText edQuant = new EditText(getContext());
                 edQuant.setText("1");
                 buider.setView(edQuant);
-                //edQuant.setInputType()
-                buider.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                edQuant.setInputType(InputType.TYPE_CLASS_NUMBER);
+                edQuant.requestFocus();
+                 buider.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Itens itemPedido = new Itens();
@@ -86,7 +88,6 @@ public class CardapioFragment extends Fragment {
                         itemPedido.setProduto_descricao(produtoSelecionado.getDescricao().toString());
                         itemPedido.setQuantidade(Integer.parseInt(edQuant.getText().toString()));
                         itemPedido.setProduto_preco(produtoSelecionado.getPreco());
-
                         if (pedido == null) {
                             pedido = new Pedido();
                             pedido.setCliente_Nome(usuario.getNome());
@@ -164,8 +165,6 @@ public class CardapioFragment extends Fragment {
             }
         });
     }
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

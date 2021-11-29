@@ -9,11 +9,11 @@ public class Itens implements Serializable {
     private int quantidade;
 
     public double getProduto_preco() {
-        return produto_preco;
+        return produto_preco ;
     }
 
     public String toString() {
-        return produto_descricao;
+        return produto_descricao + String.format("  R$%.2f", produto_preco);
     }
 
     public void setProduto_preco(double produto_preco) {

@@ -17,7 +17,7 @@ public class Produto implements Comparable<Produto> {
 
     @Override
     public String toString() {
-        return descricao;
+        return descricao + String.format("  R$%.2f", preco);
     }
 
     public String getCodigo() {

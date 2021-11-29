@@ -7,6 +7,14 @@
     android:orientation="vertical"
     tools:context=".Activity.Fragmentos.CarrinhoFragment">
 
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="Name" />
+
     <ListView
         android:id="@+id/viewCarrinho"
         android:layout_width="match_parent"

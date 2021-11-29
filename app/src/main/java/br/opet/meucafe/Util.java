@@ -11,6 +11,22 @@ import androidx.activity.result.contract.ActivityResultContracts;
 public class Util {
 
 
+
+    public static Double isDoubleValid(EditText obj) {
+        if (isValido(obj) != 0) return 0.0;
+
+
+        try {
+           Double a = Double.parseDouble(obj.getText().toString());
+           return a;
+        } catch (NumberFormatException e) {
+            obj.setError("Valor Inválido");
+           return 0.0;
+        }
+
+    }
+
+
     public static int ValidaEmail(EditText obj) {
         if (isValido(obj) != 0) {
             return 1;

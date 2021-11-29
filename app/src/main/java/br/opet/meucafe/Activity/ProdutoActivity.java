@@ -1,5 +1,7 @@
 package br.opet.meucafe.Activity;
 
+import static br.opet.meucafe.Util.isDoubleValid;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -10,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,8 +37,9 @@ import br.opet.meucafe.R;
 
 public class ProdutoActivity extends AppCompatActivity {
     EditText edDescricao;
+    EditText edPreco;
+
     ListView listView;
-    ProgressBar progressBar;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private List<Produto> ListaProduto = new ArrayList<>();
@@ -47,8 +49,9 @@ public class ProdutoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.principal);
+        setContentView(R.layout.activity_produto);
         edDescricao = findViewById(R.id.edProduto);
+        edPreco = findViewById(R.id.edPreco);
         listView = findViewById(R.id.viewProduto);
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -60,6 +63,8 @@ public class ProdutoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 produtoSelecionado = (Produto) adapterView.getItemAtPosition(i);
                 edDescricao.setText(produtoSelecionado.getDescricao());
+                edPreco.setText(Double.toString(produtoSelecionado.getPreco()));
+
             }
         });
     }
@@ -101,6 +106,9 @@ public class ProdutoActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.menu_inserir:
+                Double valor = isDoubleValid(edPreco);
+                if (valor == 0.0) break;
+                prod.setPreco(valor);
 
                 prod.setDescricao(edDescricao.getText().toString());
                 databaseReference.child("Produtos").child(prod.getCodigo()).setValue(prod).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -119,11 +127,15 @@ public class ProdutoActivity extends AppCompatActivity {
                     }
                 });
                 edDescricao.setText("");
+                edPreco.setText("");
                 break;
             case R.id.menu_alterar:
 
                 produtoSelecionado.setDescricao(edDescricao.getText().toString());
+                valor = isDoubleValid(edPreco);
+                if (valor == 0.0) break;
 
+                produtoSelecionado.setPreco(valor);
                 databaseReference.child("Produtos").child(produtoSelecionado.getCodigo()).setValue(produtoSelecionado).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -140,11 +152,10 @@ public class ProdutoActivity extends AppCompatActivity {
                     }
                 });
                 edDescricao.setText("");
+                edPreco.setText("");
                 break;
             case R.id.menu_excluir:
-
                 AlertDialog alerta;
-
                 //Cria o gerador do AlertDialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(ProdutoActivity.this);
                 //define o titulo
@@ -171,6 +182,7 @@ public class ProdutoActivity extends AppCompatActivity {
                             }
                         });
                         edDescricao.setText("");
+                        edPreco.setText("");
 
                     }
                 });
