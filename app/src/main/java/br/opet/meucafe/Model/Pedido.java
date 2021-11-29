@@ -50,7 +50,6 @@ public class Pedido implements Serializable {
                 return;
             }
 
-
         }
         itens.add(item);
     }

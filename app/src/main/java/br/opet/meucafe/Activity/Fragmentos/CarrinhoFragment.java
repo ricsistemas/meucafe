@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
@@ -41,16 +42,12 @@ public class CarrinhoFragment extends Fragment {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private FirebaseAuth autentica;
-
-    private int qtd;
-    private Double total;
-
-    private Produto produtoSelecionado;
     private ArrayAdapter<Itens> ItensArrayAdapter;
-    private Usuario usuario = new Usuario();;
     private String usu_id;
     private List<Itens> listaItens = new ArrayList<>() ;
-
+    private TextView textQtd;
+    private TextView textTotal;
+    private Usuario usuario;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -64,6 +61,10 @@ public class CarrinhoFragment extends Fragment {
         databaseReference = firebaseDatabase.getReference();
         autentica = FirebaseAuth.getInstance();
         usu_id = autentica.getCurrentUser().getUid();
+        textQtd =  root.findViewById(R.id.textQtd);
+        textTotal =  root.findViewById(R.id.textTotal);
+
+
 
         recuperaDadosUsuario();
         recuperarPedido();
@@ -87,13 +88,17 @@ public class CarrinhoFragment extends Fragment {
     private void recuperarPedido() {
 
         databaseReference.child("Pedidos").child(usu_id).addListenerForSingleValueEvent(new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Pedido p = snapshot.getValue(Pedido.class);
-                listaItens = p.getItens();
-                ItensArrayAdapter = new ArrayAdapter<Itens>(getContext(), android.R.layout.simple_list_item_1, listaItens);
-                listView.setAdapter(ItensArrayAdapter);
+              if(snapshot!=null) {
+
+                  Pedido p = snapshot.getValue(Pedido.class);
+                  listaItens = p.getItens();
+                  ItensArrayAdapter = new ArrayAdapter<Itens>(getContext(), android.R.layout.simple_list_item_1, listaItens);
+                  listView.setAdapter(ItensArrayAdapter);
+                  //  textTotal.setText(Double.toString(p.getTotal()));
+                  //   textQtd.setText(p.getQtditens());
+              }
 
             }
 

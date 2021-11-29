@@ -63,8 +63,8 @@ public class CardapioFragment extends Fragment {
         autentica = FirebaseAuth.getInstance();
         usu_id = autentica.getCurrentUser().getUid();
 
-        CarregarDados();
-        recuperaDadosUsuario();
+       CarregarDados();
+       recuperaDadosUsuario();
         recuperarPedido();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -118,7 +118,9 @@ public class CardapioFragment extends Fragment {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                pedido = snapshot.getValue(Pedido.class);
+                if(snapshot.getValue()!=null) {
+                    pedido = snapshot.getValue(Pedido.class);
+                }
             }
 
             @Override
@@ -150,13 +152,16 @@ public class CardapioFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ListaProduto.clear();
-                for (DataSnapshot obj : snapshot.getChildren()) {
-                    Produto p = obj.getValue(Produto.class);
-                    ListaProduto.add(p);
+                if (snapshot.getValue() != null) {
+
+                    for (DataSnapshot obj : snapshot.getChildren()) {
+                        Produto p = obj.getValue(Produto.class);
+                        ListaProduto.add(p);
+                    }
+                    Collections.sort(ListaProduto);
+                    produtoArrayAdapter = new ArrayAdapter<Produto>(getContext(), android.R.layout.simple_list_item_1, ListaProduto);
+                    listView.setAdapter(produtoArrayAdapter);
                 }
-                Collections.sort(ListaProduto);
-                produtoArrayAdapter = new ArrayAdapter<Produto>(getContext(), android.R.layout.simple_list_item_1, ListaProduto);
-                listView.setAdapter(produtoArrayAdapter);
             }
 
             @Override
@@ -165,6 +170,7 @@ public class CardapioFragment extends Fragment {
             }
         });
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

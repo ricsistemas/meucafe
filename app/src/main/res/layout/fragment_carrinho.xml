@@ -7,22 +7,52 @@
     android:orientation="vertical"
     tools:context=".Activity.Fragmentos.CarrinhoFragment">
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:text="Name" />
+        android:orientation="horizontal">
 
-    <ListView
-        android:id="@+id/viewCarrinho"
+        <TextView
+            android:id="@+id/textQtd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+
+        <TextView
+            android:id="@+id/textTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Finalizar" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:choiceMode="singleChoice"
-        android:clickable="true"
-        android:contextClickable="false"
-        android:defaultFocusHighlightEnabled="false"
-        android:drawSelectorOnTop="false" />
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/viewCarrinho"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:choiceMode="singleChoice"
+            android:clickable="true"
+            android:contextClickable="false"
+            android:defaultFocusHighlightEnabled="false"
+            android:drawSelectorOnTop="false" />
+    </LinearLayout>
 
 </LinearLayout>

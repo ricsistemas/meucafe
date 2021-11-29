@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 erro = erro + isSenhaValid(textSenha);
                 if (erro != 0) return;
                 progresBarLogin.setVisibility(View.VISIBLE);
-
                 autentica.signInWithEmailAndPassword(textEmail.getText().toString(), textSenha.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

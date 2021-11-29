@@ -89,7 +89,7 @@ public class ProdutoActivity extends AppCompatActivity {
             }
         });
 
-    }
+       }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -134,7 +134,6 @@ public class ProdutoActivity extends AppCompatActivity {
                 produtoSelecionado.setDescricao(edDescricao.getText().toString());
                 valor = isDoubleValid(edPreco);
                 if (valor == 0.0) break;
-
                 produtoSelecionado.setPreco(valor);
                 databaseReference.child("Produtos").child(produtoSelecionado.getCodigo()).setValue(produtoSelecionado).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
