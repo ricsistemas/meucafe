@@ -119,6 +119,8 @@ public class CardapioFragment extends Fragment {
         return root;
     }
 
+
+
     private void recuperarPedido() {
 
         databaseReference.child("Pedidos").child(usu_id).addListenerForSingleValueEvent(new ValueEventListener() {

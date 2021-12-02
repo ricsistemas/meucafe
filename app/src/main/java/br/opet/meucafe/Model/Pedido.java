@@ -43,7 +43,7 @@ public class Pedido implements Serializable {
 
         }
         for (int x = 0; x < itens.size(); x++) {
-            if (itens.get(x).getProduto_id() == item.getProduto_id()) {
+            if (itens.get(x).getProduto_id().equals(item.getProduto_id())) {
                 Itens trocaitem = itens.get(x);
                 trocaitem.setQuantidade(trocaitem.getQuantidade() + item.getQuantidade());
                 itens.set(x, trocaitem);
